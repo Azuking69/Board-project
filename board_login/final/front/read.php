@@ -28,11 +28,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>게시판 | 상세보기</title>
+    <title>다이어트는 내일부터 | 상세보기</title>
 </head>
 
 <body>
-    <h1>게시판 > 상세보기</h1>
+    <h1>다이어트는 내일부터 > 상세보기</h1>
     <!--🔔データベースから呼び出し-->
     <h2><?php echo $row['subject']; ?></h2>
     <p><strong>작성자: </strong><?php echo $row['name']; ?></p>

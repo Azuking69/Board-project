@@ -1,6 +1,6 @@
 <?php
 // 🔗データベース연결
-$servername = "db_pass";
+$servername = "db";
 $username = "root";
 $password = "root"; 
 $database = "board_pass";

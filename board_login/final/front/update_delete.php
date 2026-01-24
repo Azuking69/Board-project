@@ -28,11 +28,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>게시판 | 게시글</title>
+    <title>다이어트는 내일부터 | 게시글</title>
 </head>
 
 <body>
-    <h1>게시판 > 게시글</h1>
+    <h1>다이어트는 내일부터 > 게시글</h1>
     <table>
         <tr>
         <!--📝フォーム作成-->

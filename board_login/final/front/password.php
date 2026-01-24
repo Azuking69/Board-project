@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>게시판 | 비밀번호 확인</title>
+    <title>다이어트는 내일부터 | 비밀번호 확인</title>
 </head>
 
 <body>
-    <h1>게시판 > 비밀번호 확인</h1>
+    <h1>다이어트는 내일부터 > 비밀번호 확인</h1>
 
     <!--🧾パスワード確認フォーム-->
     <form action="../back/password_process.php" method="post">

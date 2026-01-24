@@ -47,11 +47,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>게시판 | 리스트</title>
+    <title>다이어트는 내일부터 | 리스트</title>
 </head>
 
 <body>
-    <h1>게시판 > 리스트</h1>
+    <h1>다이어트는 내일부터 > 리스트</h1>
 
     <!--🔍 検索フォーム -->
     <form method="get" action="list.php" style="display: flex; gap: 10px; margin-bottom: 20px;">

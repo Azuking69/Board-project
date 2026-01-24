@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>게시판 | 작성</title>
+    <title>다이어트는 내일부터 | 작성</title>
 </head>
 
 <body>
-    <h1>게시판 > 작성</h1>
+    <h1>다이어트는 내일부터 > 작성</h1>
 
     <!--📝項目作成フォーム-->
     <form action="../back/insert_process.php" method="post">
