@@ -1,4 +1,9 @@
 <?php
+    require_once __DIR__ .'/_layout.php';
+    page_head("다이어트는 내일부터 · 리스트");
+?>
+
+<?php
     //📇database指定
     include ("../back/db_connect_pass.php");
 
@@ -42,37 +47,31 @@
     $total_pages = ceil($total_posts / $perpage);
 ?>
 
-<!DOCTYPE HTML>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <title>다이어트는 내일부터 | 리스트</title>
-</head>
-
-<body>
-    <h1>다이어트는 내일부터 > 리스트</h1>
+    <h1 class="text-2xl font-bold mb-4">오늘 뭐 먹었어?</h1>
+    <p class="text-sm mb-6">🍰오늘의 맛있는 기록</p>
 
     <!--🔍 検索フォーム -->
-    <form method="get" action="list.php" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <select name="type">
+    <form method="get" action="list.php" class="flex flex-wrap items-center gap-2 mb-4">
+        <select name = "type" class = "h-10 rounded-md border px-3">
             <option value="subject" <?php if(isset($_GET['type']) && $_GET['type'] === 'subject') echo 'selected'; ?>>제목</option>
             <option value="content" <?php if(isset($_GET['type']) && $_GET['type'] === 'content') echo 'selected'; ?>>내용</option>
             <option value="all" <?php if(isset($_GET['type']) && $_GET['type'] === 'all') echo 'selected'; ?>>제목+내용</option>
         </select>
-        <input type="text" name="keyword" placeholder="검색어를 입력하세요" value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>">
-        <input type="submit" value="검색">
-        <a href="list.php"><button type="button">초기화</button></a>
+        <input type="text" name="keyword" class = "h-10 rounded-md border px-3"
+            placeholder="검색어를 입력하세요" 
+            value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>">
+        <input type="submit" value="검색" class = "h-10 rouded-md border px-4 cursor-pointer">
+        <a href="list.php" class="h-10 inline-flex items-center rounded-md border px-4">초기화</a>
     </form>
 
 
     <!--📇リスト化-->
-    <table border="1">
-        <tr>
-            <th>번호</th>
-            <th>이름</th>
-            <th>제목</th>
-            <th>작성일</th>
+    <table class="w-full border-collapse border">
+        <tr class="bg-white">
+            <th class="bg-white">번호</th>
+            <th class="bg-white">이름</th>
+            <th class="bg-white">제목</th>
+            <th class="bg-white">작성일</th>
         </tr>
 
         <!--🔔databaseから呼び出し-->
@@ -81,14 +80,14 @@
         if ($result->num_rows > 0){
             while ($row = $result->fetch_assoc()){
                 echo "<tr>";
-                echo "<td>" . $count-- . "</td>";
-                echo "<td>{$row['name']}</td>";
-                echo "<td><a href='read.php?id={$row['id']}'>{$row['subject']}</a></td>";
-                echo "<td>{$row['created_at']}</td>";
+                echo "<td class='border px-3 py-2'>" . $count-- . "</td>";
+                echo "<td class='border px-3 py-2'>{$row['name']}</td>";
+                echo "<td class='border px-3 py-2'><a href='read.php?id={$row['id']}'>{$row['subject']}</a></td>";
+                echo "<td class='border px-3 py-2'>{$row['created_at']}</td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='4'>검색 결과가 없습니다.</td></tr>";
+            echo "<tr><td class='border px-3 py-3' colspan='4'>검색 결과가 없습니다.</td></tr>";
         }
         ?>
     </table>
@@ -97,6 +96,7 @@
     <br>
 
     <!--📄Pagenation-->
+    <div class="mt-4 flex flex-wrap gap-2 items-center">
     <?php
     $pageRange = 5;  //１セットの表示数
     $startPage = floor(($page - 1) / $pageRange) * $pageRange + 1;
@@ -104,33 +104,33 @@
 
     // <<: 最初のページ
     if ($startPage > 1) {
-        echo "<a href='?page=1'>&laquo;</a> ";
+        echo "<a class='px-3 py-2 border rounded-md' href='?page=1'>&laquo;</a> ";
     }
 
     // <: 前のページグループ
     if ($startPage > 1) {
         $prevSet = $startPage - 1;
-        echo "<a href='?page=$prevSet'>&lt;</a> ";
+        echo "<a class='px-3 py-2 border rounded-md' href='?page=$prevSet'>&lt;</a> ";
     }
 
     // ページ番号表示
     for ($i = $startPage; $i <= $endPage; $i++) {
         if ($i == $page) {
-            echo "<strong>$i</strong> ";
+            echo "<span class='px-3 py-2 border rounded-md font-bold'>$i</span> ";
         } else {
-            echo "<a href='?page=$i'>$i</a> ";
+            echo "<a class='px-3 py-2 border rounded-md' href='?page=$i'>$i</a> ";
         }
     }
 
     // >: 次のページグループ
     if ($endPage < $total_pages) {
         $nextSet = $endPage + 1;
-        echo "<a href='?page=$nextSet'>&gt;</a> ";
+        echo "<a class='px-3 py-2 border rounded-md' href='?page=$nextSet'>&gt;</a> ";
     }
 
     // >>: 最後のページ
     if ($endPage < $total_pages) {
-        echo "<a href='?page=$total_pages'>&raquo;</a>";
+        echo "<a class='px-3 py-2 border rounded-md' href='?page=$total_pages'>&raquo;</a>";
     }
     ?>
     </div>
@@ -138,10 +138,7 @@
     <br>
 
 
-    <a href="insert.php">
-        <button type="type">글쓰기</button>
+    <a href="insert.php" class="inline-flex items-center rounded-md border px-4 py-2 mt-6">
+        글쓰기
     </a>
-   
-</body>
-
-</html>
+<?php page_foot();?>
