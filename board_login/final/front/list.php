@@ -1,9 +1,7 @@
 <?php
     require_once __DIR__ .'/_layout.php';
     page_head("다이어트는 내일부터 · 리스트");
-?>
 
-<?php
     //📇database指定
     include ("../back/db_connect_pass.php");
 
@@ -60,8 +58,10 @@
         <input type="text" name="keyword" class = "h-10 rounded-md border px-3"
             placeholder="검색어를 입력하세요" 
             value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>">
-        <input type="submit" value="검색" class = "h-10 rouded-md border px-4 cursor-pointer">
-        <a href="list.php" class="h-10 inline-flex items-center rounded-md border px-4">초기화</a>
+        <input type="submit" value="검색" class="h-10 rounded-md bg-slate-900 text-white text-sm px-4 cursor-pointer hover:bg-slate-700">
+        <a href="list.php" class="inline-flex items-center h-10 px-4 rounded-md border text-sm hover:bg-slate-100">
+            초기화
+        </a>
     </form>
 
 
@@ -104,33 +104,33 @@
 
     // <<: 最初のページ
     if ($startPage > 1) {
-        echo "<a class='px-3 py-2 border rounded-md' href='?page=1'>&laquo;</a> ";
+        echo "<a class='px-3 py-2 border rounded-md hover:bg-slate-100' href='?page=1'>&laquo;</a>";
     }
 
     // <: 前のページグループ
     if ($startPage > 1) {
         $prevSet = $startPage - 1;
-        echo "<a class='px-3 py-2 border rounded-md' href='?page=$prevSet'>&lt;</a> ";
+        echo "<a class='px-3 py-2 border rounded-md hover:bg-slate-100' href='?page=$prevSet'>&lt;</a>";
     }
 
     // ページ番号表示
     for ($i = $startPage; $i <= $endPage; $i++) {
         if ($i == $page) {
-            echo "<span class='px-3 py-2 border rounded-md font-bold'>$i</span> ";
+            echo "<span class='px-3 py-2 border rounded-md font-bold bg-slate-900 text-white'>$i</span> ";
         } else {
-            echo "<a class='px-3 py-2 border rounded-md' href='?page=$i'>$i</a> ";
+            echo "<a class='px-3 py-2 border rounded-md hover:bg-slate-100' href='?page=$i'>$i</a>";
         }
     }
 
     // >: 次のページグループ
     if ($endPage < $total_pages) {
         $nextSet = $endPage + 1;
-        echo "<a class='px-3 py-2 border rounded-md' href='?page=$nextSet'>&gt;</a> ";
+        echo "<a class='px-3 py-2 border rounded-md hover:bg-slate-100' href='?page=$nextSet'>&gt;</a>";
     }
 
     // >>: 最後のページ
     if ($endPage < $total_pages) {
-        echo "<a class='px-3 py-2 border rounded-md' href='?page=$total_pages'>&raquo;</a>";
+        echo "<a class='px-3 py-2 border rounded-md hover:bg-slate-100' href='?page=$total_pages'>&raquo;</a>";
     }
     ?>
     </div>
@@ -138,7 +138,7 @@
     <br>
 
 
-    <a href="insert.php" class="inline-flex items-center rounded-md border px-4 py-2 mt-6">
+    <a href="insert.php" class="inline-flex items-center mt-6 px-4 py-2 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
         글쓰기
     </a>
 <?php page_foot();?>

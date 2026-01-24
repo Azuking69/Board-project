@@ -18,8 +18,6 @@
             </button>";
   }
 
-
-<?php
   // 文字化け防止 + 安全な出力
   function h(string $s): string {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');

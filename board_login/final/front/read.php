@@ -40,9 +40,8 @@
     </div>
 
     <!--📝パスワード入力フォームへ-->
-    <a href="password.php?id=<?= $row['id'] ?>"
-        class="inline-block mt-4 px-4 py-2 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
-        변경
+    <a href="password.php?id=<?= $row['id'] ?>" class="mt-4 inline-block">
+        <?= btn_primary("변경") ?>
     </a>
     <br><br><hr>
 
@@ -65,9 +64,8 @@
     <div id="comment-view-<?= $comment['id'] ?>" style="border-bottom:1px solid #ccc; padding:10px;">
     <p><?= $comment['name'] ?>(<?= $comment['created_at'] ?>)</p>
     <p class="mt-4 rounded-lg border bg-white p-4"><?= nl2br($comment['content']) ?></p>
-    <button type="button" onclick="toggleEdit(<?= $comment['id'] ?>)"
-        class="inline-block mt-2 px-3 py-1.5 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
-        변경
+    <button type="button" onclick="toggleEdit(<?= $comment['id'] ?>)" class="mt-2">
+        <?= btn_secondary("변경") ?>
     </button>
     </div>
 
@@ -78,13 +76,11 @@
             <input type="hidden" name="post_id" value="<?= $id ?>">
             <textarea name="content" rows="3" cols="50" class="mt-4 rounded-lg border bg-white p-4"><?= $comment['content'] ?></textarea><br>
             <p>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요" required></p><br>
-            <button type="submit" name="action" value="update" 
-                class="inline-block mt-2 px-3 py-1.5 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
-                수정
+            <button type="submit" name="action" value="update" class="mt-2">
+                <?= btn_primary("수정") ?>
             </button>
-            <button type="submit" name="action" value="delete"
-                class="inline-block mt-2 px-3 py-1.5 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
-                삭제
+            <button type="submit" name="action" value="delete" class="mt-2">
+                <?= btn_danger("삭제") ?>
             </button>
         </form>
     </div>
@@ -105,16 +101,15 @@
             focus:border-slate-500 focus:outline-none">
         </textarea>
 
-        <button type="submit" 
-            class="inline-block mt-2 px-3 py-1.5 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
-            작성
+        <button type="submit" class="mt-2">
+            <?= btn_primary("작성") ?>
         </button>
     </form>
 
     <!--🏃最初の画面に戻る-->
     <p>게시판 목록으로 돌아가시곘습니까?  
-        <a href="list.php" class="inline-flex mt-2 px-3 py-1.5 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700">
-            돌아가기
+        <a href="list.php" class="mt-2 inline-block">
+            <?= btn_secondary("돌아가기") ?>
         </a>
     </p>
 
