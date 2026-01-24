@@ -1,4 +1,25 @@
 <?php
+  // 버튼 색 미리 준비
+  function btn_primary(string $label): string {
+    return "<button class='px-4 py-2 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700'>
+              {$label}
+            </button>";
+  }
+
+  function btn_secondary(string $label): string {
+    return "<button class='px-4 py-2 rounded-md border text-sm hover:bg-slate-100'>
+              {$label}
+            </button>";
+  }
+
+  function btn_danger(string $label): string {
+    return "<button class='px-4 py-2 rounded-md bg-red-600 text-white text-sm hover:bg-red-500'>
+              {$label}
+            </button>";
+  }
+
+
+<?php
   // 文字化け防止 + 安全な出力
   function h(string $s): string {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
