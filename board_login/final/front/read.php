@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ .'/_layout.php';
-    page_head("다이어트는 내일부터 · 리스트");
+    page_head("다이어트는 내일부터 · 상세보기");
 ?>
 
 <?php

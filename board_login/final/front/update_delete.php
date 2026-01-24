@@ -1,4 +1,7 @@
 <?php
+	require_once __DIR__ .'/_layout.php';
+	page_head("다이어트는 내일부터 · 수정/삭제");
+
     //📇database指定
     include ("../back/db_connect_pass.php");
 
@@ -23,39 +26,51 @@
 
 ?>
 
-<!DOCTYPE HTML>
-<html lang="ko">
+    <h1 class="text-2xl font-bold mb-4">이제 어떻게 할래?</h1>
+    <p class="text-sm mb-6">✏️수정할지, 🗑️삭제할지 골라주세요</p>
 
-<head>
-    <meta charset="UTF-8">
-    <title>다이어트는 내일부터 | 게시글</title>
-</head>
+    <!--📝フォーム作成-->
+    <form action="../back/update_process.php" method="post" class="space-y-4 max-w-lg">
+        <input type="hidden" name="id" value="<?= h($id) ?>">
+        <div>
+            <label class="block text-sm mb-1">이름</label>
+            <input
+            type="text"
+            name="name"
+            value="<?= h($row['name']) ?>"
+            class="w-full rounded-md border p-2 text-sm"
+            >
+        </div>
 
-<body>
-    <h1>다이어트는 내일부터 > 게시글</h1>
-    <table>
-        <tr>
-        <!--📝フォーム作成-->
-        <form action="../back/update_process.php" method='POST'>
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <p>이름: <input type="text" name="name" value="<?php echo $row['name'] ?>"></p>
-            <p>제목: <input type="text" name="subject" value="<?php echo $row['subject'] ?>" ?></p>
-            <p>내용:<br>
-            <textarea name="content" rows="5" cols="40"><?php echo $row['content'] ?></textarea></p>
+        <div>
+            <label class="block text-sm mb-1">제목</label>
+            <input
+            type="text"
+            name="subject"
+            value="<?= h($row['subject']) ?>"
+            class="w-full rounded-md border p-2 text-sm"
+            >
+        </div>
 
-            <button type="submit">수정</button>
+        <div>
+            <label class="block text-sm mb-1">내용</label>
+            <textarea
+            name="content"
+            rows="5"
+            class="w-full rounded-md border p-2 text-sm"
+            ><?= h($row['content']) ?></textarea>
+        </div>
+
+        <?= btn_primary("수정") ?>
         </form>
 
-        <br><br><bh>
+        <hr class="my-8">
 
-        <form action="../back/delete_process.php" method='POST'>
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="hidden" name="password" value="<?php echo $password; ?>">
-            <button type="submit">삭제</button>
-        </form>
+        <!-- 🗑️ 삭제 폼 -->
+        <form action="../back/delete_process.php" method="post">
+        <input type="hidden" name="id" value="<?= h($id) ?>">
+        <input type="hidden" name="password" value="<?= h($password) ?>">
 
-        </tr>
-    </table>
-</body>
-
-</html>
+        <?= btn_danger("삭제") ?>
+    </form>
+<?php page_foot();?>
