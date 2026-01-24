@@ -64,8 +64,8 @@
     <div id="comment-view-<?= $comment['id'] ?>" style="border-bottom:1px solid #ccc; padding:10px;">
     <p><?= $comment['name'] ?>(<?= $comment['created_at'] ?>)</p>
     <p class="mt-4 rounded-lg border bg-white p-4"><?= nl2br($comment['content']) ?></p>
-    <button type="button" onclick="toggleEdit(<?= $comment['id'] ?>)" class="mt-2">
-        <?= btn_secondary("변경") ?>
+    <button type="button" onclick="toggleEdit(<?= $comment['id'] ?>)" class="px-4 py-2 rounded-md bg-slate-900 text-white text-sm hover:bg-slate-700 mt-2">
+        변경
     </button>
     </div>
 
