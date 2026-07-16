@@ -237,7 +237,7 @@ docker compose up -d --build
 
 | 項目 | 値 |
 |-----|-----|
-| Web | `http://localhost` |
+| Web | `http://localhost/list` |
 | MySQL Host | `localhost` |
 | MySQL Port | `3308` |
 | Database | `board_pass` |
